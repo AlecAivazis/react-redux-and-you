@@ -1,0 +1,19 @@
+html
+    head
+        link(rel="stylesheet", href="static/styles/reveal.css")
+        link(rel="stylesheet", href="static/lib/plugin/prism/prism.css")
+        link(rel="stylesheet", href="static/lib/plugin/prism/theme.css")
+        link(rel="stylesheet", href="static/styles/theme/black.css")
+        link(rel="stylesheet", href="static/styles/font-awesome.min.css")
+        link(rel="stylesheet", href="static/styles/custom.css")
+    body
+        .reveal
+            .slides
+                include cover.pug
+                include bio.pug
+                include roadmap.pug
+                include thankyou.pug
+
+        script(src="static/lib/js/head.min.js")
+        script(src="static/scripts/reveal.js")
+        script(src="static/scripts/init.js")

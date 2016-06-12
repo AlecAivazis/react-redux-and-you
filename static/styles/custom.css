@@ -1,0 +1,66 @@
+.ds_logo {
+    margin: none !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 30%;
+}
+
+mark {
+    background-color: rgba(0,0,0,0) !important;
+    opacity: .5;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.example {
+    color: #B7B7B7;
+    letter-spacing: 4.5;
+    margin-top: 35px !important;
+}
+
+.illustration {
+    align-items: center;
+    justify-content: center;
+}
+
+.illustration img {
+    background: none !important;
+    border: none !important;
+}
+
+.example i {
+    margin: 0 10px;
+}
+
+pre.flat {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+pre.flat code {
+    padding: 0;
+}
+
+h3 {
+    text-transform: capitalize !important;
+}
+
+.roadmapItem {
+    list-style: none;
+    margin-bottom: 15px;
+    color: #B7B7B7;
+}
