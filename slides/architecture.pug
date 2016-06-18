@@ -1,2 +1,22 @@
 section
-    | architecture
+    section
+        img.ds_logo(src="static/images/redux.png")
+
+    section
+        h2 architecture
+
+    section
+        h5 redux is guided by 3 principles
+        ol
+            li.fragment(data-fragment-index=1) single source of truth
+            li.fragment(data-fragment-index=2) state is read only
+            li.fragment(data-fragment-index=3) changes are made using pure functions
+
+    section
+        .row(style="justify-content: center; align-items: center;")
+            span.fragment(data-fragment-index=1, style="padding: 100px; background-color: #2A6EAC; margin-right: 75px;")
+                | actions
+            i.fa.fa-long-arrow-right.fragment(data-fragment-index=1, style="font-size: 180px;")
+            span(style="padding: 100px; background-color: #5927A1; margin-left: 75px;")
+                | store
+

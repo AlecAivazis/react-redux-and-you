@@ -1,0 +1,162 @@
+section
+    section
+        h3 Actions
+
+    section
+        pre
+            code(style="margin-left: 25%").
+                {
+                    type: 'add_cart_item',
+                    item: {
+                        name: 'Asparagus',
+                        price: 4.95,
+
+                    }
+                }
+
+    section
+        h3 Action Creators
+
+    section
+        pre
+            code.
+                // action types are exported for later use
+                export const ADD_ITEM = 'ADD_TO_CART'
+
+                // more readible factory
+                const addCartItem(name, price) => {
+                    return {
+                        type: ADD_ITEM,
+                        item: {
+                            name: name,
+                            price: price,
+                    }
+                }
+
+    section
+        h3 Our minimal state
+
+
+    section
+        pre
+            code.
+                {
+                    items: [{name: 'Steak', price: 25.75}, ...],
+                    recommendations: [{name: 'asparagus'}, ...]
+                }
+
+
+    section
+        h3 Reducers
+
+    section
+        pre(style="max-height: none; font-size: 20px; margin-bottom: 10px;")
+            code(style="max-height: none").
+                // the initial state
+                const initialItems = {
+                    items: [],
+                    recommendations: [],
+                }
+
+
+                // a reducer is just a pure function!
+                const itemList = (prevState = initialState, action) => {
+
+                    // for now, let's not do anything
+                    return prevState
+
+                }
+
+    section
+        pre(style="max-height: none; font-size: 20px; margin-bottom: 10px;")
+            code(style="max-height: none").
+                // import the action type
+                import ADD_ITEM from 'actions/types'
+
+                // ...
+
+                // a reducer is just a pure function!
+                const itemList = (prevState = initialState, action) => {
+                    // if the action designates a new cart item
+                    if (action.type == ADD_ITEM) {
+                        // return the new state with new items added
+                        return {
+                            ...prevState,
+                            items: [...prevState.items, action.item]
+                        }
+                    }
+
+                    // if its an action we dont care about, let's not do anything
+                    return prevState
+                }
+
+    section
+        h3 Handling more actions
+
+    section
+        pre(style="max-height: none; font-size: 20px; margin-bottom: 10px;")
+            code(style="max-height: none").
+                // if the action designates a new cart item
+                if (action.type == ADD_ITEM) {
+                    // return the new state with new item added
+                    return {
+                        ...prevState,
+                        items: [...prevState.items, action.item]
+                    }
+                // otherwise if the action is a new reccommendation
+                } else if (action.type == ADD_RECOMMENDATION) {
+                    // return the new state with new reccomendation added
+                    return {
+                        ...prevState,
+                        reccomendations: [...prevState.reccomendations, action.item]
+                    }
+                }
+
+    section
+        h3 Splitting reducers
+
+    section
+        pre(style="max-height: none; font-size: 20px; margin-bottom: 10px;")
+            code(style="max-height: none").
+                const itemReducer = (prevState = [], action) => {
+                    // if the action designates a new cart item
+                    if (action.type == ADD_ITEM) {
+                        // return the new state with new item added
+                        return [...prevState, action.item]
+                    }
+                    // otherwise its an action this reducer isn't interested in
+                    return prevState
+                }
+
+                const reccomendationReducer = (prevState = [], action) => {
+                    // if the action designates a new cart item
+                    if (action.type == ADD_ITEM) {
+                        // return the new state with new item added
+                        return [...prevState, action.item]
+                    }
+                    // otherwise its an action this reducer isn't interested in
+                    return prevState
+                }
+
+    section
+        pre(style="max-height: none; font-size: 20px; margin-bottom: 10px;")
+            code(style="max-height: none").
+                // combine them into a single function
+                const reducer = (prevState, action) => ({
+                    items: itemReducer(prevState.items, action),
+                    reccomendations: reccomendationReducer(
+                                        prevState.reccomendations,
+                                        action
+                                    )
+                })
+
+    section
+        pre(style="max-height: none; font-size: 20px; margin-bottom: 10px;")
+            code(style="max-height: none").
+                import {combineReducers} from redux
+                // combine them into a single function
+                const reducer = combineReducers({
+                    items: itemReducer,
+                    reccomendations: reccomendationReducer
+                })
+

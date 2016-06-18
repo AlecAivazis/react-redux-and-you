@@ -1,2 +1,32 @@
 section
-    | react
+    section Shopping cart screenshot
+
+    section
+        span(style="display: flex; align-items: center; justify-content: center; font-size: 80px")
+            img.ds_logo(src="static/images/react.svg", style="margin-right: 25px;")
+            | React
+
+    section
+        pre.flat(style="max-height: none; font-size: 20px; margin-bottom: 10px;")
+            code(style="max-height: none").
+                const itemsInCart = [{name: 'Steak', price: 25.75}, ...]
+        pre.flat(style="max-height: none; font-size: 20px; margin-bottom: 10px;").fragment(data-fragment-index=1)
+            code(style="max-height: none").
+                // the root shopping cart component
+                const ShoppingCart = (items) =&gt; {
+                    // figure out the total cost of all the recipes
+                    const totalCost = items.reduce((sum, {price}) => sum + price, 0)
+                    // render the component
+                    return (
+                        &lt;div&gt;
+                            {items.map(cartItem =&gt; (
+                                &lt;ShoppingCartItem {...cartItem}/&gt;
+                            ))}
+                            &lt;div&gt;
+                                Total cost: {totalCost}
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    )
+                }
+
+                // rendered with &lt;ShoppingCart items={itemsInCart} /&gt;
