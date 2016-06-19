@@ -1,2 +1,72 @@
 section
-    | redux and react
+    section
+        h2 redux and react
+
+
+    section
+        img.ds_logo(src="static/images/redux-flow.png")
+
+    section
+        h3 The Container Pattern
+
+
+    section
+        h5 The Presentational Component
+
+        ol
+            li.fragment(data-fragment-index=1)
+                | Concerned with how things look
+            li.fragment(data-fragment-index=2)
+                | Data and callbacks through props only
+
+    section
+        h5 The Container Component
+        ol
+            li.fragment(data-fragment-index=1)
+                | Concerned with how things work
+            li.fragment(data-fragment-index=2)
+                | Provide data/callbacks to presentational component
+
+    section
+        h5 Benefits
+        ol
+            li.fragment(data-fragment-index=1)
+                | Separation of concerns
+            li.fragment(data-fragment-index=2)
+                | More reusability
+
+
+
+    section
+        h5 Creating a redux container
+        pre.flat.fragment(data-fragment-index=4)
+            code.
+                import {connect} from 'react-redux'
+        pre.flat.fragment(data-fragment-index=1, style="margin-bottom: 20px;")
+            code.
+                const ItemList = ({items, addItemToCart}) => (...)
+
+        pre.flat.fragment(data-fragment-index=2, style="max-height: none; font-size: 20px; margin-bottom: 10px;")
+            code(style="max-height: none").
+
+                const mapStateToProps = (state) => {
+                    return {
+                        items: state.items
+                    }
+                }
+        pre.flat.fragment(data-fragment-index=3, style="max-height: none; font-size: 20px; margin-bottom: 10px;")
+            code(style="max-height: none").
+
+                const mapDispatchToProps = (dispatch) => {
+                    return {
+                        addItemToCart: (name, price) => {
+                            dispatch(addCartItem(name, price))
+                        }
+                    }
+                }
+        pre.flat.fragment(data-fragment-index=4, style="max-height: none; font-size: 20px; margin-bottom: 10px;")
+            code(style="max-height: none").
+
+                const ItemListContainer = connect(mapStateToProps, mapDispatchToProps)(
+                    ItemList
+                )

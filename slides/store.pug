@@ -1,2 +1,46 @@
 section
-    | Store
+    section
+        h2 Store
+
+    section
+        h5 important methods
+        ol
+            li.fragment(data-fragment-index=1) getState()
+            li.fragment(data-fragment-index=2) dispatch(action)
+            li.fragment(data-fragment-index=3) subscribe(listener)
+
+    section
+        h5 Creating a store
+        pre
+            code.
+                import {createStore} from 'redux'
+                import reducer from './reducer'
+
+                const store = createStore(reducer)
+
+    section
+        h5 mutating the store
+
+        pre.flat(style="margin-bottom: 24px")
+            code.
+                // more readible factory
+                const addCartItem(name, price) => {
+                    return {
+                        type: ADD_ITEM,
+                        item: {
+                            name: name,
+                            price: price,
+                    }
+                }
+        pre.flat.fragment(data-fragment-index=1)
+            code.
+
+                store.dispatch(addCartItem("Carrot", 5.65))
+
+    section
+        h5 listening for changes
+        pre.fragment(data-fragment-index=1)
+            code.
+                store.subscribe(() => {
+                    console.log(store.getState())
+                })
